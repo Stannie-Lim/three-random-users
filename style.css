@@ -1,0 +1,77 @@
+body {
+    font-family: verdana;
+    background-color: lightgrey;
+}
+
+.random {
+    display: flex;
+    justify-content: center;
+    border: solid 1px black;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 0 35%;
+}
+
+.random:hover {
+    cursor: pointer;
+}
+
+/* what color you want everything to be */
+.random:hover, li.show:hover, 
+div.showUsers > ul > li.box  {
+    background-color: teal;
+}
+
+ul.pages {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+div.showUsers {
+    display: flex;
+    justify-content: space-around;
+}
+
+div.showUsers > ul { 
+    list-style-type: none;
+}
+
+div.showUsers > ul > li.box {
+    padding: 1rem;
+    width: 20vw;
+    height: 35vh;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+h2, p{
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+li.show {
+    padding: 1rem;
+    width: 0.5rem;
+    border-radius: 10px;
+    margin: 10% 45%;
+    /* border: 1px solid black; */
+    text-decoration: underline;
+}
+
+li.show:hover {
+    cursor: pointer;
+}
