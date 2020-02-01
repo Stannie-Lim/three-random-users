@@ -18,13 +18,22 @@ const getRandomUsers = Promise.all([randomPerson1, randomPerson2, randomPerson3]
         console.log(err);
     });
 
-const renderPage = (click) => {
-    click.forEach(person => {
-        person.addEventListener("click", (ev) => {
-            ev.target.parentElement.childNodes[3].classList.toggle("hide");
-        });
+// const renderPage = (click) => {
+//     // click.forEach(person => {
+//     //     person.addEventListener("click", (ev) => {
+//     //         ev.target.parentElement.childNodes[3].classList.toggle("hide");
+//     //     });
+//     // });
+// };
+
+window.addEventListener("hashchange", () => {
+    const pageNumber = window.location.hash.slice(1);
+    usersArray.forEach(person => {
+        person.hidden = true;
     });
-};
+    usersArray[pageNumber].hidden = false;
+    render();
+});
 
 const renderUsers = (listOfPeople) => {
     for(let i = 0; i < listOfPeople.length; i++) {
@@ -32,14 +41,19 @@ const renderUsers = (listOfPeople) => {
             name: listOfPeople[i].fullName,
             email: listOfPeople[i].email,
             picture: listOfPeople[i].avatar,
-            number: i
+            number: i,
+            hidden: false
         });
     }
+    render();
+};
+
+const render = () => {
     const html = usersArray.map(person => {
         return `
             <ul>
-                <li class="show">${person.number + 1}</li>
-                <li class="box">
+                <li class="show"><a href="index.html#${person.number}">${person.number + 1}</a></li>
+                <li class="box ${person.hidden ? 'hide' : ''}">
                     <h2>${person.name}</h2>
                     <p>${person.email}</p>
                     <img class="avatar" src=${person.picture}></img>
@@ -48,8 +62,8 @@ const renderUsers = (listOfPeople) => {
         `;
     }).join('');
     showUsers.innerHTML = html;
-    const show = document.querySelectorAll(".show");
-    renderPage(show);
+    // const show = document.querySelectorAll(".show");
+    // renderPage(show);
 
     const showAllPeople = document.querySelectorAll(".box");
     // console.log(showAllPeople);
@@ -59,8 +73,6 @@ const renderUsers = (listOfPeople) => {
         });
     });
 };
-
-
 
 
 /*

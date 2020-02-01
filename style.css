@@ -17,7 +17,7 @@ body {
 }
 
 /* what color you want everything to be */
-.random:hover, li.show:hover, 
+.random:hover, li.show > a:hover, 
 div.showUsers > ul > li.box  {
     background-color: teal;
 }
@@ -63,15 +63,14 @@ h2, p{
     visibility: hidden;
 }
 
-li.show {
-    padding: 1rem;
-    width: 0.5rem;
+li.show > a {
+    padding: 0.5rem;
     border-radius: 10px;
-    margin: 10% 45%;
-    /* border: 1px solid black; */
-    text-decoration: underline;
+
 }
 
-li.show:hover {
-    cursor: pointer;
+li.show {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
 }
